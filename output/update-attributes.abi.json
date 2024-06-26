@@ -1,0 +1,104 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.78.0",
+            "commitHash": "9b00956e56009bab2aa15d7bff10916599e3d6d6",
+            "commitDate": "2024-04-29",
+            "channel": "Stable",
+            "short": "rustc 1.78.0 (9b00956e5 2024-04-29)"
+        },
+        "contractCrate": {
+            "name": "update-attributes",
+            "version": "0.0.0"
+        },
+        "framework": {
+            "name": "multiversx-sc",
+            "version": "0.50.5"
+        }
+    },
+    "docs": [
+        "An empty contract. To be used as a template when starting a new contract from scratch."
+    ],
+    "name": "UpdateAttributes",
+    "constructor": {
+        "inputs": [],
+        "outputs": []
+    },
+    "upgradeConstructor": {
+        "inputs": [],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "issue",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "EGLD"
+            ],
+            "inputs": [
+                {
+                    "name": "token_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "token_ticker",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "create",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "to",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "update",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "new_attributes",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "send_nft",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "to",
+                    "type": "Address"
+                },
+                {
+                    "name": "nonce",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "nft_token_id",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        }
+    ],
+    "esdtAttributes": [],
+    "hasCallback": true,
+    "types": {}
+}
