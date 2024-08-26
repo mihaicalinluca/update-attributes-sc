@@ -1,6 +1,8 @@
 [
   "bigIntAdd",
   "bigIntGetCallValue",
+  "bigIntGetInt64",
+  "bigIntIsInt64",
   "bigIntSetInt64",
   "bigIntSign",
   "checkNoPayment",

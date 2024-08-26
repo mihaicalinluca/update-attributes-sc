@@ -81,7 +81,7 @@ where
     To: TxTo<Env>,
     Gas: TxGas<Env>,
 {
-    pub fn issue_fungible_token_mapper<
+    pub fn issue<
         Arg0: ProxyArg<ManagedBuffer<Env::Api>>,
         Arg1: ProxyArg<ManagedBuffer<Env::Api>>,
     >(
@@ -90,42 +90,9 @@ where
         token_ticker: Arg1,
     ) -> TxTypedCall<Env, From, To, (), Gas, ()> {
         self.wrapped_tx
-            .raw_call("issue_fungible_token_mapper")
+            .raw_call("issue")
             .argument(&token_name)
             .argument(&token_ticker)
-            .original_result()
-    }
-
-    pub fn issue_non_fungible<
-        Arg0: ProxyArg<ManagedBuffer<Env::Api>>,
-        Arg1: ProxyArg<ManagedBuffer<Env::Api>>,
-    >(
-        self,
-        token_name: Arg0,
-        token_ticker: Arg1,
-    ) -> TxTypedCall<Env, From, To, (), Gas, ()> {
-        self.wrapped_tx
-            .raw_call("issue_non_fungible")
-            .argument(&token_name)
-            .argument(&token_ticker)
-            .original_result()
-    }
-
-    pub fn issue_fungible<
-        Arg0: ProxyArg<ManagedBuffer<Env::Api>>,
-        Arg1: ProxyArg<ManagedBuffer<Env::Api>>,
-        Arg2: ProxyArg<u64>,
-    >(
-        self,
-        token_name: Arg0,
-        token_ticker: Arg1,
-        initial_supply: Arg2,
-    ) -> TxTypedCall<Env, From, To, (), Gas, ()> {
-        self.wrapped_tx
-            .raw_call("issue_fungible")
-            .argument(&token_name)
-            .argument(&token_ticker)
-            .argument(&initial_supply)
             .original_result()
     }
 
@@ -138,7 +105,7 @@ where
             .original_result()
     }
 
-    pub fn create_nft<
+    pub fn create<
         Arg0: ProxyArg<ManagedAddress<Env::Api>>,
     >(
         self,
@@ -146,19 +113,19 @@ where
     ) -> TxTypedCall<Env, From, To, NotPayable, Gas, ()> {
         self.wrapped_tx
             .payment(NotPayable)
-            .raw_call("create_nft")
+            .raw_call("create")
             .argument(&to)
             .original_result()
     }
 
-    pub fn update_attributes<
+    pub fn update<
         Arg0: ProxyArg<ManagedBuffer<Env::Api>>,
     >(
         self,
         new_attributes: Arg0,
     ) -> TxTypedCall<Env, From, To, (), Gas, ()> {
         self.wrapped_tx
-            .raw_call("update_attributes")
+            .raw_call("update")
             .argument(&new_attributes)
             .original_result()
     }
@@ -185,15 +152,6 @@ where
         self.wrapped_tx
             .payment(NotPayable)
             .raw_call("nft_token_id")
-            .original_result()
-    }
-
-    pub fn test_token_mapper(
-        self,
-    ) -> TxTypedCall<Env, From, To, NotPayable, Gas, TokenIdentifier<Env::Api>> {
-        self.wrapped_tx
-            .payment(NotPayable)
-            .raw_call("test_token_mapper")
             .original_result()
     }
 }
